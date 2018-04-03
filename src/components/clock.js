@@ -5,13 +5,44 @@ class Clock extends Component {
     constructor(props) {
         super(props)
 
+        this.getTimeRemaining = this.getTimeRemaining.bind(this);
+
         this.state = {
-            timeRemaining: {}
+            timeRemaining: this.getTimeRemaining(this.props.birthdayFormState.startDate.toString())
         }
     }
 
+    getTimeRemaining(birthday) {
+
+        var bday = new Date(birthday);
+        let today = new Date();
+
+        var distance = bday.getTime() - today.getTime();
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        
+
+        return {
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        }
+    }
+
+
+    componentWillMount() {
+        
+    }
+
+
     render() {
         const data = this.state.timeRemaining
+        console.log('RENDERING');
 
         return (
             <div>
@@ -22,11 +53,7 @@ class Clock extends Component {
             </div>
         )
     }
-
-    componentDidMount(){
-        this.birthday = this.props.birthdayFormState.startDate.toString();
-        alert(this.birthday);
-    }
 }
 
-export default Clock;
+
+export default Clock;    
