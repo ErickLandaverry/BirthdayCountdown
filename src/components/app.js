@@ -10,11 +10,11 @@ export default class App extends Component {
           <div className="header__skew">
             <div className="header__subskew">
             
-              <BirthdayForm />
             </div> 
           </div>
   
         </header>
+        <BirthdayForm />
         
       </div>
     );
