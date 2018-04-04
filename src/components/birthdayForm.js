@@ -49,7 +49,7 @@ class BirthdayForm extends Component {
                     </div>
                 :
                     <div>
-                        <h1>Birthday Form Component!</h1>
+                        
                         <DatePicker 
                             selected={this.state.startDate}
                             onChange={this.handleChange}
